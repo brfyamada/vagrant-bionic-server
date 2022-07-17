@@ -18,6 +18,17 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.provision :shell, :inline => "sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config; sudo systemctl restart sshd;", run: "always"
   config.vm.synced_folder '.', '/home/vagrant/bionic'
+
+  #Port fowarding:
+  config.vm.network "forwarded_port", guest: 80, host: 8089
+
+  #Static IP configuration
+  #config.vm.network "private_network", ip: "192.168.56.4"
+
+  #DHCP configuration
+  config.vm.network "private_network", type: "dhcp"
+
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
