@@ -24,7 +24,20 @@ config.vm.synced_folder '.', '/home/vagrant/bionic'
 
 - I had to use virtualbox installed in windows using wsl and install vagrant in linux. 
 
+# Config pubic_key and private_key 
 
+- Create 2 folders .configs and .local in the root path of project
+
+- Generate the prublic_key and private_key 
+```bash
+ssh-keygen -t rsa
+```
+
+- name the key as "id_bionic"
+
+- put "id_bionic.pub" inside .configs and "id_bionic" inside .local
+
+configur
 
 ## links used to solve problems:
 -  Permission denied (publickey) : https://stackoverflow.com/questions/50271150/vagrant-permission-denied-publickey#:~:text=To%20fix%20the%20Permission%20denied,authorised_keys%20file%20on%20the%20guest.
